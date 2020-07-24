@@ -37,9 +37,9 @@ const MonthWrapper = styled.div`
   background-color: ${(props) => {
     if (props.count > 0 && 2 >= props.count) {
       return "gray";
-    } else if (props.count > 2 && 6 >= props.count) {
+    } else if (props.count >= 3 && 6 >= props.count) {
       return "blue";
-    } else if (props.count > 7 && 10 >= props.count) {
+    } else if (props.count >= 7 && 10 >= props.count) {
       return "green";
     } else {
       return "red";
