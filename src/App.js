@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import { MonthComponent } from "./MonthComponent";
+import { getMonthFromDate } from "./utils/utils";
 
-function App() {
+const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 1366px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
+const fetchUsers = () =>
+  fetch(
+    "https://yalantis-react-school-api.yalantis.com/api/task0/users"
+  ).then((response) => response.json());
+
+const App = () => {
+  const [users, setUsers] = useState([]);
+
+  const getUsers = () =>
+    fetchUsers().then((data) => {
+      setUsers(data);
+    });
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  const createMonthsList = () => {
+    let monthsList = [];
+    users.forEach((user) => {
+      monthsList = monthsList.concat(getMonthFromDate(user.dob));
+    });
+    let unique = monthsList
+      .filter((item, i, ar) => ar.indexOf(item) === i)
+      .sort((a, b) => a - b);
+    return unique;
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainWrapper>
+      {createMonthsList().map((month, index) => {
+        return <MonthComponent key={index} users={users} month={month} />;
+      })}
+    </MainWrapper>
   );
-}
-
+};
 export default App;
