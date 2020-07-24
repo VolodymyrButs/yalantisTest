@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ac5ce45100ba04349f10e24eb151131e",
+    "revision": "b6f071f30ce0aec7a24f0a23ac20d2ad",
     "url": "/yalantisTest/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/yalantisTest/static/js/2.c7b678a7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "17fd276fcf6143539035",
-    "url": "/yalantisTest/static/js/main.7255451a.chunk.js"
+    "revision": "0c483fd461d143aeebe9",
+    "url": "/yalantisTest/static/js/main.ba0c2be8.chunk.js"
   },
   {
     "revision": "c12658b0f7cd4a58b8fd",
